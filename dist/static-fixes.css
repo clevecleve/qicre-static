@@ -1,0 +1,122 @@
+/* =====================================================================
+   static-fixes.css — QIC RE static site patch styles
+   ===================================================================== */
+
+/* ── Carousel navigation ─────────────────────────────────────────── */
+.sf-carousel-wrap {
+  position: relative;
+}
+
+.sf-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s;
+  user-select: none;
+}
+.sf-carousel-btn:hover { background: rgba(0,0,0,0.8); }
+.sf-carousel-prev { left: 10px; }
+.sf-carousel-next { right: 10px; }
+
+.sf-carousel-dots {
+  text-align: center;
+  padding: 10px 0 6px;
+}
+.sf-carousel-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  margin: 0 4px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.sf-carousel-dot.active { background: #000; }
+
+/* ── Properties / News filter bar ───────────────────────────────── */
+.sf-news-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 18px 0 14px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 24px;
+}
+.sf-filter-btn {
+  background: transparent;
+  border: 1px solid #999;
+  color: #333;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sf-filter-btn:hover { border-color: #000; color: #000; }
+.sf-filter-btn.active {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+/* ── Contact form notice / fallback ─────────────────────────────── */
+.sf-form-notice {
+  background: #f7f4f0;
+  border-left: 3px solid #000;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.sf-form-notice a { color: #000; font-weight: 600; }
+.sf-contact-fallback {
+  background: #f7f4f0;
+  border-left: 3px solid #000;
+  padding: 24px 28px;
+  margin: 24px 0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.sf-contact-fallback h3 { margin: 0 0 12px; font-size: 18px; }
+.sf-contact-fallback a { color: #000; }
+
+/* ── Search notice ───────────────────────────────────────────────── */
+.sf-search-notice {
+  padding: 40px 0 20px;
+  max-width: 640px;
+}
+.sf-search-notice h2 { font-size: 22px; margin-bottom: 12px; }
+.sf-search-notice p { font-size: 15px; line-height: 1.7; color: #444; }
+.sf-search-notice .sf-browse-links { margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap; }
+.sf-search-notice .sf-browse-links a {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #000;
+  color: #000;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.sf-search-notice .sf-browse-links a:hover { background: #000; color: #fff; }
