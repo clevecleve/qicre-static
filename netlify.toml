@@ -1,0 +1,10 @@
+[build]
+  publish = "dist"
+  # No build command — dist/ is pre-built locally and committed to the repo.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
