@@ -257,41 +257,40 @@
   }
 
   /* ================================================================
-     5. SEARCH PAGE — replace or augment with a static notice
+     5. SEARCH PAGE — replace search box with a static browse notice
      ================================================================ */
   function initSearchPage() {
     if (window.location.pathname.toLowerCase().indexOf('/search') === -1) return;
 
-    // Find the main content area
-    var main = document.querySelector('.container main, main, [role="main"], #root > div > div:nth-child(2)');
+    // Find and hide the search box component
+    var searchWrapper = document.querySelector('.retailer-sitesearch');
+    var searchComponent = searchWrapper
+      ? (searchWrapper.closest('.base-component') || searchWrapper.parentNode)
+      : null;
 
-    // Try to find the search input wrapper to insert notice after it
-    var searchInput = document.querySelector('input[type="search"], input[placeholder*="Search"], input[placeholder*="search"]');
-    var insertTarget = searchInput
-      ? (searchInput.closest('.container') || searchInput.parentNode)
-      : (main || document.querySelector('.container'));
-
-    if (!insertTarget) return;
-
+    // Build the browse notice inside a container so it aligns with the logo
     var notice = document.createElement('div');
     notice.className = 'sf-search-notice';
-    notice.innerHTML = '<h2>Search</h2>'
+    notice.innerHTML = '<div class="container">'
       + '<p>Full-text search is not available in this version of the site. '
-      + 'Use the links below to browse our content, or navigate using the menu above.</p>'
+      + 'Browse our content using the links below or navigate using the menu above.</p>'
       + '<div class="sf-browse-links">'
-      + '<a href="/Properties">Browse Properties</a>'
-      + '<a href="/News">Browse News</a>'
+      + '<a href="/Properties">Properties</a>'
+      + '<a href="/News">News</a>'
       + '<a href="/ESG/ESG-overview">ESG Reports</a>'
       + '<a href="/Brand_iQ">Brand iQ</a>'
       + '<a href="/Contact-Us">Contact Us</a>'
+      + '</div>'
       + '</div>';
 
-    // Insert after the search input or at the start of main
-    if (searchInput) {
-      var wrap = searchInput.closest('.container') || searchInput.parentNode;
-      wrap.parentNode.insertBefore(notice, wrap.nextSibling);
+    if (searchComponent) {
+      // Replace the search component with the browse notice
+      searchComponent.parentNode.insertBefore(notice, searchComponent);
+      searchComponent.style.display = 'none';
     } else {
-      insertTarget.insertBefore(notice, insertTarget.firstChild);
+      // Fallback: insert at top of root
+      var root = document.getElementById('root') || document.body;
+      root.insertBefore(notice, root.firstChild);
     }
   }
 

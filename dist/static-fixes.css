@@ -102,12 +102,10 @@
 
 /* ── Search notice ───────────────────────────────────────────────── */
 .sf-search-notice {
-  padding: 40px 0 20px;
-  max-width: 640px;
+  padding: 40px 0;
 }
-.sf-search-notice h2 { font-size: 22px; margin-bottom: 12px; }
-.sf-search-notice p { font-size: 15px; line-height: 1.7; color: #444; }
-.sf-search-notice .sf-browse-links { margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap; }
+.sf-search-notice p { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 24px; }
+.sf-search-notice .sf-browse-links { display: flex; gap: 14px; flex-wrap: wrap; }
 .sf-search-notice .sf-browse-links a {
   display: inline-block;
   padding: 10px 22px;
