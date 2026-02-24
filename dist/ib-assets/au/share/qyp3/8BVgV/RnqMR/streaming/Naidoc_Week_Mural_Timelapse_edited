@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body style="margin-bottom:0 !important; margin-top:0 !important">
+    <div id="ib-jwplayer"></div>
+    <script src="https://static-auprod2auv3.intelligencebank.com/jwplayer-8.26.9/jwplayer-3f45d873da4db385794f8474327445d3.js?vsn=d"></script>
+    <script>
+      var eventHandler = function eventHandler(evt) {
+        var error_102630 = "The streaming server is temporarily unavailable.<br/>Try again later (Code: 102630).";
+        var error_232404 = "This video is still being converted for streaming or cannot be played.<br/>Try again later (Code: 232404).";
+        var error_232011 = "This video is still being converted for streaming or cannot be played.<br/>Try again later (Code: 232011).";
+
+        var gen_error_msg = function (msg) {
+          return "<div style='display:flex;text-align:center;line-height:19px;width:100%;height:100%;align-items:center;justify-content:center'>".concat(msg, "</div>");
+        };
+
+        var element = document.getElementById('ib-jwplayer');
+        if (evt.code === 102630) {
+          element.innerHTML = gen_error_msg(error_102630);
+        } else if (evt.code === 232404) {
+          element.innerHTML = gen_error_msg(error_232404);
+        } else if (evt.code === 232011) {
+          element.innerHTML = gen_error_msg(error_232011);
+        }
+      };
+
+      var captionUrl = '';
+      var setupObj = {
+        skin: 'glow',
+        setControls: true,
+        sources: {
+           file: 'https://cdn.intelligencebank.com/amazons3/au/mp4:amazons3/ib-au-prod2-store/qyp3/ibData/0c16126cb42d50d25871143973d68cd2/vod/o.mp4/playlist.m3u8?wowzatokenhash=ise1Ay1zOKZKlB-8VUSc17Zg7WTBgQ-x6jdJiL3dwqQ=&wowzatokenendtime=1771992297&wowzatokenpublic=true'
+        },
+        stretching: 'uniform',
+        autostart: 'false',
+        image: 'https://cdn.intelligencebank.com/au/thumbnail/qyp3/0c16126cb42d50d25871143973d68cd2/original/thumb',
+      };
+
+
+      if (captionUrl !== '')  {
+        setupObj.tracks = [{
+          default: true,
+          kind: 'captions',
+          file: encodeURI(captionUrl),
+          label: 'Default'
+        }];
+      }
+      console.log("JWPlayer", setupObj);
+
+      // need to work out if displayed in frame
+      if (window.innerHeight) {
+        setupObj.width = '100%';
+        setupObj.height = window.innerHeight + 'px';
+      }
+      jwplayer.key='8OGqdD6lKjSU/bnpuPA+gpcIM2i/Qd+2PjBDE6hPtGA=';
+      var player = jwplayer('ib-jwplayer').setup(setupObj);
+      jwplayer('ib-jwplayer').on('error', eventHandler);
+      jwplayer('ib-jwplayer').on('setupError', eventHandler);
+    </script>
+  </body>
+</html>
