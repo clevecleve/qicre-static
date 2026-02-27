@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 
 # dist/ is intentionally committed so Netlify can deploy it without a build step
+
+# MP4 video files from IB CDN exceed GitHub's 100 MB file size limit
+dist/ib-cdn/**/mp4/
